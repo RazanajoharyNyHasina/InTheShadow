@@ -1,0 +1,4 @@
+res://Scenes/Intro/Intro.tscn
+res://Scenes/Intro/scene_intro.tscn
+res://Scripts/script_intro.gd
+res://Scenes/MainMenu/scene_main_menu.tscn
