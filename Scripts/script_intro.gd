@@ -1,6 +1,6 @@
 extends Control
 
-const			SceneMainMenu: String = "res://Scenes/MainMenu/scene_main_menu.tscn";
+const			SceneMainMenu: String = "res://Scenes/scene_main_menu.tscn";
 @onready var	NodeLabel: Label = $CenterContainer/VBoxContainer/Label;
 @onready var	NodeAnimationPlayer: AnimationPlayer = $AnimationPlayer;
 var				Done: bool = false;
