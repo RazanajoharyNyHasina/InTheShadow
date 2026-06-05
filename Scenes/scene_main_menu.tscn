@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://d1d3skhbts8c2"]
 
+[ext_resource type="Script" uid="uid://b2cnvcss53go4" path="res://Scripts/script_main_menu.gd" id="1_ensjn"]
+[ext_resource type="Theme" uid="uid://dxy46hlyrvs6m" path="res://Themes/InTheShadow.theme" id="1_rmxsk"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv5lr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,6 +19,7 @@ glow_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_gbws4"]
 
 [node name="Node3D" type="Node3D" unique_id=1850968878]
+script = ExtResource("1_ensjn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=358021082]
 environment = SubResource("Environment_saqpn")
@@ -29,3 +33,44 @@ transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 1, 2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1211014697]
 mesh = SubResource("BoxMesh_gbws4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067221232]
+
+[node name="Container" type="GridContainer" parent="CanvasLayer" unique_id=31573323]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -101.0
+offset_right = 284.0
+grow_vertical = 0
+theme = ExtResource("1_rmxsk")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Container" unique_id=1979823357]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Gamemode" type="VBoxContainer" parent="CanvasLayer/Container/MarginContainer" unique_id=1491187242]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Normal" type="Button" parent="CanvasLayer/Container/MarginContainer/Gamemode" unique_id=1703578735]
+layout_mode = 2
+text = "MAIN_MENU_GAMEMODE_NORMAL"
+alignment = 0
+
+[node name="Test" type="Button" parent="CanvasLayer/Container/MarginContainer/Gamemode" unique_id=304302463]
+layout_mode = 2
+text = "MAIN_MENU_GAMEMODE_TEST"
+alignment = 0
+
+[node name="Options" type="Button" parent="CanvasLayer/Container/MarginContainer/Gamemode" unique_id=1999860746]
+layout_mode = 2
+text = "MAIN_MENU_GAMEMODE_OPTIONS"
+alignment = 0
+
+[node name="Exit" type="Button" parent="CanvasLayer/Container/MarginContainer/Gamemode" unique_id=2105299398]
+layout_mode = 2
+text = "MAIN_MENU_GAMEMODE_EXIT"
+alignment = 0

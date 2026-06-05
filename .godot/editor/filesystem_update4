@@ -1,2 +1,8 @@
 res://Scenes/scene_intro.tscn
 res://Scripts/script_intro.gd
+res://Scenes/scene_main_menu.tscn
+res://Themes/InTheShadow.theme
+res://Locales/translation.csv
+res://Locales/translation.en.translation
+res://Scripts/script_main_menu.gd
+res://Locales/translation.fr.translation
