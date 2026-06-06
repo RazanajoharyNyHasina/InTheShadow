@@ -45,32 +45,58 @@ offset_right = 284.0
 grow_vertical = 0
 theme = ExtResource("1_rmxsk")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Container" unique_id=1979823357]
+[node name="MenuContainer" type="MarginContainer" parent="CanvasLayer/Container" unique_id=1979823357]
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="Gamemode" type="VBoxContainer" parent="CanvasLayer/Container/MarginContainer" unique_id=1491187242]
+[node name="Gamemode" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1491187242]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Normal" type="Button" parent="CanvasLayer/Container/MarginContainer/Gamemode" unique_id=1703578735]
+[node name="Normal" type="Button" parent="CanvasLayer/Container/MenuContainer/Gamemode" unique_id=1703578735]
 layout_mode = 2
 text = "MAIN_MENU_GAMEMODE_NORMAL"
 alignment = 0
 
-[node name="Test" type="Button" parent="CanvasLayer/Container/MarginContainer/Gamemode" unique_id=304302463]
+[node name="Test" type="Button" parent="CanvasLayer/Container/MenuContainer/Gamemode" unique_id=304302463]
 layout_mode = 2
 text = "MAIN_MENU_GAMEMODE_TEST"
 alignment = 0
 
-[node name="Options" type="Button" parent="CanvasLayer/Container/MarginContainer/Gamemode" unique_id=1999860746]
+[node name="Options" type="Button" parent="CanvasLayer/Container/MenuContainer/Gamemode" unique_id=1999860746]
 layout_mode = 2
 text = "MAIN_MENU_GAMEMODE_OPTIONS"
 alignment = 0
 
-[node name="Exit" type="Button" parent="CanvasLayer/Container/MarginContainer/Gamemode" unique_id=2105299398]
+[node name="Exit" type="Button" parent="CanvasLayer/Container/MenuContainer/Gamemode" unique_id=2105299398]
 layout_mode = 2
 text = "MAIN_MENU_GAMEMODE_EXIT"
+alignment = 0
+
+[node name="NormalMode" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=553070805]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Level1" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2031850155]
+layout_mode = 2
+text = "Level1"
+alignment = 0
+
+[node name="Level2" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=583437091]
+layout_mode = 2
+text = "Level2"
+alignment = 0
+
+[node name="Level3" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=1769779681]
+layout_mode = 2
+text = "Level3"
+alignment = 0
+
+[node name="Cancel" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2115089075]
+layout_mode = 2
+text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
