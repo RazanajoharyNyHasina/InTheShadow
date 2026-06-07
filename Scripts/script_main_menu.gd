@@ -1,8 +1,10 @@
 extends Node3D
 
-@onready var NormalMode: Button = $CanvasLayer/Container/MenuContainer/Gamemode/Normal;
-@onready var GameModeNode: VBoxContainer = $CanvasLayer/Container/MenuContainer/Gamemode;
+@onready var NormalMode: Button = $CanvasLayer/Container/MenuContainer/GameMode/Normal;
+@onready var GameModeNode: VBoxContainer = $CanvasLayer/Container/MenuContainer/GameMode;
 @onready var NormalModeNode: VBoxContainer = $CanvasLayer/Container/MenuContainer/NormalMode;
+@onready var TestModeNode: VBoxContainer = $CanvasLayer/Container/MenuContainer/TestMode;
+@onready var SettingsNode: VBoxContainer = $CanvasLayer/Container/MenuContainer/Settings;
 @onready var MenuContainerNode: MarginContainer = $CanvasLayer/Container/MenuContainer;
 
 func	_on_button_hovered(button: Button):
@@ -12,17 +14,23 @@ func	_on_button_hovered(button: Button):
 func	_on_button_blur(button: Button):
 	create_tween().tween_property(button, "scale", Vector2(1.0, 1.0), 0.1);
 
+func	open_menu_and_hide_others(menu_name: String, target: Node):
+	for child in MenuContainerNode.get_children():
+		if (child.name == menu_name):
+			child.visible = true;
+		else:
+			child.visible = false;
+	target.get_child(0).grab_focus();
+
 func	_on_button_pressed(button: Button):
 	create_tween().tween_property(button, "scale", Vector2(0.95, 0.95), 0.1);
 	match button.name:
 		"Normal":
-			NormalModeNode.visible = true;
-			GameModeNode.visible = false;
-			NormalModeNode.get_child(0).grab_focus();
+			open_menu_and_hide_others("NormalMode", NormalModeNode);
 		"Test":
-			pass;
-		"Options":
-			pass;
+			open_menu_and_hide_others("TestMode", TestModeNode);
+		"Settings":
+			open_menu_and_hide_others("Settings", SettingsNode);
 		"Exit":
 			get_tree().quit(0);
 		"Level1":
@@ -31,10 +39,8 @@ func	_on_button_pressed(button: Button):
 			pass;
 		"Level3":
 			pass;
-		"Cancel":
-			NormalModeNode.visible = false;
-			GameModeNode.visible = true;
-			GameModeNode.get_child(0).grab_focus();
+		"CancelToGameMode":
+			open_menu_and_hide_others("GameMode", GameModeNode);
 
 func	_on_button_down(button: Button):
 	create_tween().tween_property(button, "scale", Vector2(0.95, 0.95), 0.1);

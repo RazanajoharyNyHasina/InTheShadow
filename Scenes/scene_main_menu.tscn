@@ -50,27 +50,27 @@ layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="Gamemode" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1491187242]
+[node name="GameMode" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1491187242]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Normal" type="Button" parent="CanvasLayer/Container/MenuContainer/Gamemode" unique_id=1703578735]
+[node name="Normal" type="Button" parent="CanvasLayer/Container/MenuContainer/GameMode" unique_id=1703578735]
 layout_mode = 2
 text = "MAIN_MENU_GAMEMODE_NORMAL"
 alignment = 0
 
-[node name="Test" type="Button" parent="CanvasLayer/Container/MenuContainer/Gamemode" unique_id=304302463]
+[node name="Test" type="Button" parent="CanvasLayer/Container/MenuContainer/GameMode" unique_id=304302463]
 layout_mode = 2
 text = "MAIN_MENU_GAMEMODE_TEST"
 alignment = 0
 
-[node name="Options" type="Button" parent="CanvasLayer/Container/MenuContainer/Gamemode" unique_id=1999860746]
+[node name="Settings" type="Button" parent="CanvasLayer/Container/MenuContainer/GameMode" unique_id=1999860746]
 layout_mode = 2
 text = "MAIN_MENU_GAMEMODE_OPTIONS"
 alignment = 0
 
-[node name="Exit" type="Button" parent="CanvasLayer/Container/MenuContainer/Gamemode" unique_id=2105299398]
+[node name="Exit" type="Button" parent="CanvasLayer/Container/MenuContainer/GameMode" unique_id=2105299398]
 layout_mode = 2
 text = "MAIN_MENU_GAMEMODE_EXIT"
 alignment = 0
@@ -81,22 +81,74 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Level1" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2031850155]
+[node name="NormalModeLevel1" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2031850155]
 layout_mode = 2
 text = "Level1"
 alignment = 0
 
-[node name="Level2" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=583437091]
+[node name="NormalModeLevel2" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=583437091]
 layout_mode = 2
 text = "Level2"
 alignment = 0
 
-[node name="Level3" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=1769779681]
+[node name="NormalModeLevel3" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=1769779681]
 layout_mode = 2
 text = "Level3"
 alignment = 0
 
-[node name="Cancel" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2115089075]
+[node name="CancelToGameMode" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2115089075]
+layout_mode = 2
+text = "MAIN_MENU_BACK_LABEL"
+alignment = 0
+
+[node name="TestMode" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1700961002]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TestModeLevel1" type="Button" parent="CanvasLayer/Container/MenuContainer/TestMode" unique_id=380866876]
+layout_mode = 2
+text = "Level1"
+alignment = 0
+
+[node name="TestModeLevel2" type="Button" parent="CanvasLayer/Container/MenuContainer/TestMode" unique_id=183367423]
+layout_mode = 2
+text = "Level2"
+alignment = 0
+
+[node name="TestModeLevel3" type="Button" parent="CanvasLayer/Container/MenuContainer/TestMode" unique_id=1822350336]
+layout_mode = 2
+text = "Level3"
+alignment = 0
+
+[node name="CancelToGameMode" type="Button" parent="CanvasLayer/Container/MenuContainer/TestMode" unique_id=667710617]
+layout_mode = 2
+text = "MAIN_MENU_BACK_LABEL"
+alignment = 0
+
+[node name="Settings" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1560123204]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Sound" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=164797440]
+layout_mode = 2
+text = "MAIN_MENU_SETTINGS_SOUND"
+alignment = 0
+
+[node name="WindowSize" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1743068772]
+layout_mode = 2
+text = "MAIN_MENU_SETTINGS_WINDOW_SIZE"
+alignment = 0
+
+[node name="Langage" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1807595934]
+layout_mode = 2
+text = "MAIN_MENU_SETTINGS_LANGAGE"
+alignment = 0
+
+[node name="CancelToGameMode" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=2072836239]
 layout_mode = 2
 text = "MAIN_MENU_BACK_LABEL"
 alignment = 0

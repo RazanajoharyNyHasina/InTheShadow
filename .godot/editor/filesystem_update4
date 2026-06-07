@@ -1,5 +1,6 @@
-res://Scenes/scene_main_menu.tscn
-res://Scripts/script_main_menu.gd
-res://Locales/translation.csv
 res://Locales/translation.en.translation
 res://Locales/translation.fr.translation
+res://Scripts/script_main_menu.gd
+res://Themes/InTheShadow.theme
+res://Scenes/scene_main_menu.tscn
+res://Locales/translation.csv
