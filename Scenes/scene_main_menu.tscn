@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b2cnvcss53go4" path="res://Scripts/script_main_menu.gd" id="1_ensjn"]
 [ext_resource type="Theme" uid="uid://dxy46hlyrvs6m" path="res://Themes/InTheShadow.theme" id="1_rmxsk"]
+[ext_resource type="PackedScene" uid="uid://btr2fpo6squ73" path="res://Assets/RES/Room.res" id="3_otdy6"]
+[ext_resource type="ArrayMesh" uid="uid://duui8phmphj0b" path="res://Assets/OBJ/elephant.obj" id="4_ushii"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv5lr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -13,10 +15,13 @@ sky_material = SubResource("ProceduralSkyMaterial_jv5lr")
 [sub_resource type="Environment" id="Environment_saqpn"]
 background_mode = 2
 sky = SubResource("Sky_34k6o")
-tonemap_mode = 2
+ambient_light_source = 2
+ambient_light_color = Color(0.5077429, 0.39272484, 0.56015956, 1)
+tonemap_mode = 3
+ssao_enabled = true
 glow_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_gbws4"]
+glow_bloom = 0.5
+volumetric_fog_enabled = true
 
 [node name="Node3D" type="Node3D" unique_id=1850968878]
 script = ExtResource("1_ensjn")
@@ -25,14 +30,14 @@ script = ExtResource("1_ensjn")
 environment = SubResource("Environment_saqpn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=387650715]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8562525, -0.47253856, 0.20866007, 0.503909, -0.6752637, 0.53860426, -0.113610685, 0.5663269, 0.8163127, 0, 0, 0)
+light_color = Color(0.96842486, 0.5864337, 0.44026592, 1)
 shadow_enabled = true
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1465227927]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 1, 2)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1211014697]
-mesh = SubResource("BoxMesh_gbws4")
+transform = Transform3D(0.72831607, 0.18364853, 0.6601734, 0, 0.96341735, -0.2680056, -0.68524134, 0.1951928, 0.7016723, 5.6897864, 1.886781, 8.44727)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067221232]
 
@@ -152,3 +157,18 @@ alignment = 0
 layout_mode = 2
 text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
+
+[node name="Room2" parent="." unique_id=785738211 instance=ExtResource("3_otdy6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22137213, 0.11868191, 0.09876537)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1717697790]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.744894, 3, 3.4477797)
+light_energy = 10.0
+light_cull_mask = 4293918722
+shadow_enabled = true
+spot_range = 11.695467
+spot_angle = 12.874528
+
+[node name="Elephant" type="MeshInstance3D" parent="." unique_id=880091379]
+transform = Transform3D(0.053045373, -0.24430741, 0.00027031693, 0.006144208, 0.0010575352, -0.24992225, 0.24423029, 0.053035524, 0.006228692, 5.2101817, 3, 3.503199)
+mesh = ExtResource("4_ushii")

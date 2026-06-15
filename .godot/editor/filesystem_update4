@@ -1,6 +1,5 @@
-res://Locales/translation.en.translation
-res://Locales/translation.fr.translation
-res://Scripts/script_main_menu.gd
-res://Themes/InTheShadow.theme
 res://Scenes/scene_main_menu.tscn
-res://Locales/translation.csv
+res://Assets/RES/Room.res
+res://Material/Room.material
+res://Shaders/Paper.gdshader
+res://Assets/RES/PaperNoise.tres
