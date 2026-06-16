@@ -1,4 +1,6 @@
-shader_type	spatial;
+shader_type			spatial;
+
+render_mode			cull_disabled;
 
 uniform sampler2D	wind_noise;
 uniform sampler2D	albedo_tex;
@@ -6,7 +8,7 @@ uniform sampler2D	normal_tex;
 uniform sampler2D	orm_tex;
 
 void vertex() {
-	VERTEX.xy -= texture(wind_noise, UV + (TIME * 0.2)).r * COLOR.r;
+	VERTEX.yz -= (texture(wind_noise, UV + (TIME * 0.2)).r * COLOR.r) * 0.2;
 }
 
 void fragment() {

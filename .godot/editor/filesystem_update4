@@ -1,5 +1,4 @@
 res://Scenes/scene_main_menu.tscn
-res://Assets/RES/Room.res
-res://Material/Room.material
 res://Shaders/Paper.gdshader
-res://Assets/RES/PaperNoise.tres
+res://Material/Room.material
+res://Assets/RES/Room.res
