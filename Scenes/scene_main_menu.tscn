@@ -17,16 +17,15 @@ sky = SubResource("Sky_34k6o")
 ambient_light_source = 2
 ambient_light_color = Color(0.2504317, 0.207014, 0.4048038, 1)
 tonemap_mode = 3
-ssao_enabled = true
+ssil_enabled = true
 ssil_radius = 6.81
 ssil_intensity = 6.61
-sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
 glow_enabled = true
 glow_bloom = 1.0
 glow_blend_mode = 0
 volumetric_fog_enabled = true
-volumetric_fog_ambient_inject = 0.44
-volumetric_fog_temporal_reprojection_amount = 0.99
+volumetric_fog_anisotropy = 0.5
 
 [node name="Node3D" type="Node3D" unique_id=1850968878]
 script = ExtResource("1_ensjn")
@@ -35,16 +34,16 @@ script = ExtResource("1_ensjn")
 environment = SubResource("Environment_saqpn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=387650715]
-transform = Transform3D(1, 0, 0, 0, 0.811472, 0.5843913, 0, -0.5843913, 0.811472, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9872421, 0.15922648, 0, -0.15922648, 0.9872421, 0, 0, 0)
 light_color = Color(0.8119616, 0.35605836, 0.15999681, 1)
-light_energy = 5.0
+light_energy = 10.0
 light_volumetric_fog_energy = 1.2
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_reverse_cull_face = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1465227927]
-transform = Transform3D(0.841136, 0.27817577, -0.463798, 0, 0.857577, 0.51435566, 0.54082376, -0.43264303, 0.72133887, 2.9976606, 1.4987092, 8.326081)
+transform = Transform3D(0.5945751, 0.10558314, 0.7970776, 0, 0.99134064, -0.13131578, -0.8040402, 0.07807711, 0.5894266, 4.0396347, 2.2506313, 7.6508856)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067221232]
 
@@ -165,14 +164,5 @@ layout_mode = 2
 text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
 
-[node name="Room2" parent="." unique_id=919670992 instance=ExtResource("3_otdy6")]
+[node name="Room2" parent="." unique_id=1619297663 instance=ExtResource("3_otdy6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3450184, -0.015658379, 0.10160494)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1717697790]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.744894, 3, 3.4477797)
-visible = false
-light_energy = 10.0
-light_cull_mask = 4293918722
-shadow_enabled = true
-spot_range = 11.695467
-spot_angle = 12.874528

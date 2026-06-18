@@ -1,3 +1,5 @@
+OmniLight3D
+Decal
 SpotLight3D
 MarginContainer
 Button
@@ -11,5 +13,3 @@ Camera3D
 AnimationPlayer
 TextureRect
 CenterContainer
-Control
-Camera2D
