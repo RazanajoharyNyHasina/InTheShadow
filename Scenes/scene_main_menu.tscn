@@ -4,6 +4,13 @@
 [ext_resource type="Theme" uid="uid://dxy46hlyrvs6m" path="res://Themes/InTheShadow.theme" id="1_rmxsk"]
 [ext_resource type="PackedScene" uid="uid://btr2fpo6squ73" path="res://Assets/RES/Room.res" id="3_otdy6"]
 
+[sub_resource type="Gradient" id="Gradient_otdy6"]
+colors = PackedColorArray(0.023562556, 0.020881835, 0.11076885, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ushii"]
+gradient = SubResource("Gradient_otdy6")
+width = 64
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv5lr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -15,17 +22,18 @@ sky_material = SubResource("ProceduralSkyMaterial_jv5lr")
 background_mode = 2
 sky = SubResource("Sky_34k6o")
 ambient_light_source = 2
-ambient_light_color = Color(0.2504317, 0.207014, 0.4048038, 1)
+ambient_light_color = Color(0.37442043, 0.15456918, 0.4144145, 1)
 tonemap_mode = 3
 ssil_enabled = true
-ssil_radius = 6.81
-ssil_intensity = 6.61
+ssil_intensity = 16.0
 sdfgi_read_sky_light = false
 glow_enabled = true
 glow_bloom = 1.0
 glow_blend_mode = 0
 volumetric_fog_enabled = true
 volumetric_fog_anisotropy = 0.5
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_ushii")
 
 [node name="Node3D" type="Node3D" unique_id=1850968878]
 script = ExtResource("1_ensjn")
@@ -37,7 +45,7 @@ environment = SubResource("Environment_saqpn")
 transform = Transform3D(1, 0, 0, 0, 0.9872421, 0.15922648, 0, -0.15922648, 0.9872421, 0, 0, 0)
 light_color = Color(0.8119616, 0.35605836, 0.15999681, 1)
 light_energy = 10.0
-light_volumetric_fog_energy = 1.2
+light_indirect_energy = 5.0
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_reverse_cull_face = true
