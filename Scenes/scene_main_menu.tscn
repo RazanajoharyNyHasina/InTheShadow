@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://btr2fpo6squ73" path="res://Assets/RES/Room.res" id="3_otdy6"]
 
 [sub_resource type="Gradient" id="Gradient_otdy6"]
-colors = PackedColorArray(0.023562556, 0.020881835, 0.11076885, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.003940095, 0.0034905493, 0.025453424, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ushii"]
 gradient = SubResource("Gradient_otdy6")
@@ -24,13 +24,13 @@ sky = SubResource("Sky_34k6o")
 ambient_light_source = 2
 ambient_light_color = Color(0.37442043, 0.15456918, 0.4144145, 1)
 tonemap_mode = 3
-ssil_enabled = true
+ssao_enabled = true
+ssao_intensity = 3.0
 ssil_intensity = 16.0
 sdfgi_read_sky_light = false
 glow_enabled = true
 glow_bloom = 1.0
 glow_blend_mode = 0
-volumetric_fog_enabled = true
 volumetric_fog_anisotropy = 0.5
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_ushii")
@@ -42,16 +42,17 @@ script = ExtResource("1_ensjn")
 environment = SubResource("Environment_saqpn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=387650715]
-transform = Transform3D(1, 0, 0, 0, 0.9872421, 0.15922648, 0, -0.15922648, 0.9872421, 0, 0, 0)
+transform = Transform3D(-0.6168929, -0.20620778, 0.7595536, -0.13938563, 0.9784367, 0.1524253, -0.77460635, -0.01184082, -0.632333, 0, 1.0185142, 0)
 light_color = Color(0.8119616, 0.35605836, 0.15999681, 1)
-light_energy = 10.0
+light_energy = 5.0
 light_indirect_energy = 5.0
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_reverse_cull_face = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1465227927]
-transform = Transform3D(0.5945751, 0.10558314, 0.7970776, 0, 0.99134064, -0.13131578, -0.8040402, 0.07807711, 0.5894266, 4.0396347, 2.2506313, 7.6508856)
+transform = Transform3D(-0.7371305, -0.14678597, -0.6596154, 0, 0.97612286, -0.21721922, 0.6757504, -0.16011892, -0.7195299, 0.19478512, 2.6208441, -0.6979966)
+fov = 60.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067221232]
 
@@ -172,5 +173,10 @@ layout_mode = 2
 text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
 
-[node name="Room2" parent="." unique_id=1619297663 instance=ExtResource("3_otdy6")]
+[node name="Room2" parent="." unique_id=146700209 instance=ExtResource("3_otdy6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3450184, -0.015658379, 0.10160494)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1860638225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9163909, 2.7202988, 1)
+light_color = Color(0.9578057, 0.6779106, 0.4362061, 1)
+omni_range = 9.755802

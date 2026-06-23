@@ -12,4 +12,3 @@ MeshInstance3D
 Camera3D
 AnimationPlayer
 TextureRect
-CenterContainer

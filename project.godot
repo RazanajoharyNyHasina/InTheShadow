@@ -23,7 +23,7 @@ settings/stdout/print_fps=true
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=4
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
@@ -38,5 +38,3 @@ locale/translations=PackedStringArray("res://Locales/translation.en.translation"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
-lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
