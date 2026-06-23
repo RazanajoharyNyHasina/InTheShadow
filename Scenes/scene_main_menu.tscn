@@ -31,6 +31,7 @@ sdfgi_read_sky_light = false
 glow_enabled = true
 glow_bloom = 1.0
 glow_blend_mode = 0
+volumetric_fog_enabled = true
 volumetric_fog_anisotropy = 0.5
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_ushii")
@@ -42,9 +43,9 @@ script = ExtResource("1_ensjn")
 environment = SubResource("Environment_saqpn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=387650715]
-transform = Transform3D(-0.6168929, -0.20620778, 0.7595536, -0.13938563, 0.9784367, 0.1524253, -0.77460635, -0.01184082, -0.632333, 0, 1.0185142, 0)
+transform = Transform3D(0.022743568, -0.13445882, 0.99065816, -0.3862078, 0.9128081, 0.13275908, -0.9221315, -0.38561928, -0.031168513, 0, 1.0185142, 0)
 light_color = Color(0.8119616, 0.35605836, 0.15999681, 1)
-light_energy = 5.0
+light_energy = 10.0
 light_indirect_energy = 5.0
 shadow_enabled = true
 shadow_bias = 0.0
