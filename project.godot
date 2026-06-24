@@ -26,6 +26,7 @@ window/size/viewport_height=1080
 window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [internationalization]
 
@@ -38,3 +39,4 @@ locale/translations=PackedStringArray("res://Locales/translation.en.translation"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/screen_space_aa=1

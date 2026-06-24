@@ -43,16 +43,15 @@ script = ExtResource("1_ensjn")
 environment = SubResource("Environment_saqpn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=387650715]
-transform = Transform3D(0.022743568, -0.13445882, 0.99065816, -0.3862078, 0.9128081, 0.13275908, -0.9221315, -0.38561928, -0.031168513, 0, 1.0185142, 0)
+transform = Transform3D(-0.66831255, -0.14109305, 0.7303777, 0.18205532, 0.92096645, 0.34449545, -0.72125906, 0.3631996, -0.58980644, -2.3841858e-07, 1.6844362, 0.22421816)
 light_color = Color(0.8119616, 0.35605836, 0.15999681, 1)
-light_energy = 10.0
-light_indirect_energy = 5.0
+light_energy = 5.0
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_reverse_cull_face = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1465227927]
-transform = Transform3D(-0.7371305, -0.14678597, -0.6596154, 0, 0.97612286, -0.21721922, 0.6757504, -0.16011892, -0.7195299, 0.19478512, 2.6208441, -0.6979966)
+transform = Transform3D(-0.6222862, -0.06544314, -0.78004944, 0, 0.9964992, -0.08360244, 0.7827898, -0.052024648, -0.6201077, -1.6564093, 2.4264119, 2.1780572)
 fov = 60.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067221232]
@@ -176,8 +175,3 @@ alignment = 0
 
 [node name="Room2" parent="." unique_id=146700209 instance=ExtResource("3_otdy6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3450184, -0.015658379, 0.10160494)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1860638225]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9163909, 2.7202988, 1)
-light_color = Color(0.9578057, 0.6779106, 0.4362061, 1)
-omni_range = 9.755802
