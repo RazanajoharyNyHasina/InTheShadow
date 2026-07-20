@@ -36,6 +36,18 @@ volumetric_fog_anisotropy = 0.5
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_ushii")
 
+[sub_resource type="Gradient" id="Gradient_ushii"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xo7up"]
+gradient = SubResource("Gradient_ushii")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.6, 0.4)
+metadata/_snap_enabled = true
+
 [sub_resource type="Animation" id="Animation_otdy6"]
 length = 0.001
 tracks/0/type = "value"
@@ -92,6 +104,18 @@ fov = 60.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067221232]
 
+[node name="DarkenBackground" type="TextureRect" parent="CanvasLayer" unique_id=2005012202]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -1088.0
+offset_right = 1088.0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 10
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_xo7up")
+
 [node name="Container" type="GridContainer" parent="CanvasLayer" unique_id=31573323]
 anchors_preset = 2
 anchor_top = 1.0
@@ -103,11 +127,11 @@ theme = ExtResource("1_rmxsk")
 
 [node name="MenuContainer" type="MarginContainer" parent="CanvasLayer/Container" unique_id=1979823357]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_bottom = 64
 
 [node name="GameMode" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1491187242]
-visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -185,9 +209,38 @@ text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
 
 [node name="Settings" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1560123204]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
+
+[node name="RenderQuality" type="HBoxContainer" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=422546683]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Container/MenuContainer/Settings/RenderQuality" unique_id=1394372346]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+
+[node name="RenderQualityLabel" type="Label" parent="CanvasLayer/Container/MenuContainer/Settings/RenderQuality/MarginContainer" unique_id=1202400219]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+text = "MAIN_MENU_SETTINGS_RENDER_QUALITY"
+
+[node name="RenderQualityOptionButton" type="OptionButton" parent="CanvasLayer/Container/MenuContainer/Settings/RenderQuality" unique_id=2128217819]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../FromSettingsToGameMode")
+focus_neighbor_bottom = NodePath("../../VolumetricFog/VolumetricFog")
+focus_behavior_recursive = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "High"
+popup/item_0/id = 0
+popup/item_1/text = "Mid"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
 
 [node name="VolumetricFog" type="HBoxContainer" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1341808383]
 layout_mode = 2
@@ -195,6 +248,8 @@ layout_mode = 2
 [node name="VolumetricFog" type="CheckButton" parent="CanvasLayer/Container/MenuContainer/Settings/VolumetricFog" unique_id=717536645]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../RenderQuality/RenderQualityOptionButton")
+focus_neighbor_bottom = NodePath("../../Sound/Sound")
 text = "MAIN_MENU_SETTINGS_VOLUMETRIC_FOG"
 
 [node name="Sound" type="HBoxContainer" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=894864620]
@@ -203,15 +258,23 @@ layout_mode = 2
 [node name="Sound" type="CheckButton" parent="CanvasLayer/Container/MenuContainer/Settings/Sound" unique_id=1375268119]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../VolumetricFog/VolumetricFog")
+focus_neighbor_bottom = NodePath("../../SSAO/SSAO")
 text = "MAIN_MENU_SETTINGS_SOUND"
 
-[node name="WindowSize" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1743068772]
+[node name="SSAO" type="HBoxContainer" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=130279604]
 layout_mode = 2
-text = "MAIN_MENU_SETTINGS_WINDOW_SIZE"
-alignment = 0
+
+[node name="SSAO" type="CheckButton" parent="CanvasLayer/Container/MenuContainer/Settings/SSAO" unique_id=1545587131]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../Sound/Sound")
+focus_neighbor_bottom = NodePath("../../Langage")
+text = "SSAO"
 
 [node name="Langage" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1807595934]
 layout_mode = 2
+focus_neighbor_top = NodePath("../SSAO/SSAO")
 text = "MAIN_MENU_SETTINGS_LANGAGE"
 alignment = 0
 
@@ -221,7 +284,6 @@ text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
 
 [node name="BlackScreen" type="ColorRect" parent="CanvasLayer" unique_id=1619987066]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,10 +1,7 @@
-res://Scenes/scene_intro.tscn
-res://Shaders/Paper.gdshader
-res://Scripts/script_intro.gd
-res://Scenes/scene_main_menu.tscn
-res://Scripts/script_main_menu.gd
-res://Locales/translation.csv
 res://Locales/translation.en.translation
 res://Locales/translation.fr.translation
-res://Scripts/file_saving.gd
+res://Scenes/scene_main_menu.tscn
+res://Shaders/Paper.gdshader
+res://Scripts/script_main_menu.gd
+res://Locales/translation.csv
 res://Themes/InTheShadow.theme

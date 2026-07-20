@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var normal_mode_node: Button = $CanvasLayer/Container/MenuContainer/GameMode/Normal;
+@onready var normal_mode_node: VBoxContainer = $CanvasLayer/Container/MenuContainer/NormalMode
 @onready var game_mode_node: VBoxContainer = $CanvasLayer/Container/MenuContainer/GameMode;
 @onready var test_mode_node: VBoxContainer = $CanvasLayer/Container/MenuContainer/TestMode;
 @onready var settings_node: VBoxContainer = $CanvasLayer/Container/MenuContainer/Settings;
@@ -10,6 +10,9 @@ extends Node3D
 @onready var volumetric_fog: CheckButton = $CanvasLayer/Container/MenuContainer/Settings/VolumetricFog/VolumetricFog;
 @onready var sound: CheckButton = $CanvasLayer/Container/MenuContainer/Settings/Sound/Sound;
 @onready var world_environment: WorldEnvironment = $WorldEnvironment;
+@onready var ssao: CheckButton = $CanvasLayer/Container/MenuContainer/Settings/SSAO/SSAO
+@onready var render_quality_option_button: OptionButton = $CanvasLayer/Container/MenuContainer/Settings/RenderQuality/RenderQualityOptionButton
+@onready var render_quality_label: Label = $CanvasLayer/Container/MenuContainer/Settings/RenderQuality/MarginContainer/RenderQualityLabel
 
 func	_on_button_hovered(button: Button):
 	button.grab_focus();
@@ -58,6 +61,23 @@ func	_on_volumetric_fog_toggled(toggled: bool) -> void:
 func	_on_sound_toggled(_toggled: bool) -> void:
 	pass;
 
+func	_on_ssao_toggled(toggled: bool) -> void:
+	world_environment.environment.ssao_enabled = toggled;
+
+func _on_render_quality_change(idx: int) -> void:
+	var value: float = 1.0;
+
+	match idx:
+		0:
+			value = 1.0;
+		1:
+			value = 0.75;
+		2:
+			value = 0.5;
+
+	get_viewport().scaling_3d_scale = value;
+
+
 func	_save_current_state() -> void:
 	var config: ConfigFile = ConfigFile.new();
 	var err: Error = config.load("user://user_settings.cfg");
@@ -68,7 +88,8 @@ func	_save_current_state() -> void:
 
 	config.set_value("Accessibility", "langage", "en");
 	config.set_value("Graphics", "volumetric_fog", world_environment.environment.volumetric_fog_enabled);
-	config.set_value("Graphics", "windows_size", get_window().size);
+	config.set_value("Graphics", "ssao", world_environment.environment.ssao_enabled);
+	config.set_value("Graphics", "render_quality", render_quality_option_button.selected);
 	config.set_value("Sound", "enabled", sound.button_pressed);
 
 	var err_save: Error = config.save("user://user_settings.cfg");
@@ -79,10 +100,19 @@ func	_create_new_save() -> void:
 	var config: ConfigFile = ConfigFile.new();
 
 	config.set_value("Accessibility", "langage", "en");
+
 	config.set_value("Graphics", "volumetric_fog", true);
 	world_environment.environment.volumetric_fog_enabled = true;
 	volumetric_fog.set_pressed_no_signal(true);
-	config.set_value("Graphics", "windows_size", Vector2i(1920,1080));
+
+	config.set_value("Graphics", "ssao", true);
+	world_environment.environment.ssao_enabled = true;
+	ssao.set_pressed_no_signal(true);
+
+	config.set_value("Graphics", "render_quality", 1.0);
+	get_viewport().scaling_3d_scale = 1.0;
+	render_quality_option_button.selected = 0;
+
 	config.set_value("Sound", "enabled", true);
 	sound.set_pressed_no_signal(true);
 
@@ -106,9 +136,20 @@ func	_read_save_state_and_apply() -> void:
 		world_environment.environment.volumetric_fog_enabled = read_volumetric_fog;
 		volumetric_fog.set_pressed_no_signal(read_volumetric_fog);
 
+	var read_ssao_status = config.get_value("Graphics", "ssao");
+	if typeof(read_ssao_status) == TYPE_BOOL:
+		world_environment.environment.ssao_enabled = read_ssao_status;
+		ssao.set_pressed_no_signal(read_ssao_status);
+
+	var read_render_quality_status = config.get_value("Graphics", "render_quality");
+	if typeof(read_render_quality_status) == TYPE_INT:
+		render_quality_option_button.selected = read_render_quality_status;
+		_on_render_quality_change(read_render_quality_status);
+
 	var read_sound_status = config.get_value("Sound", "enabled");
 	if typeof(read_sound_status) == TYPE_BOOL:
 		sound.set_pressed_no_signal(read_sound_status);
+
 
 func	_ready() -> void:
 	# Make the first button grab focus for keyboard accessibility
@@ -136,3 +177,13 @@ func	_ready() -> void:
 	sound.mouse_entered.connect(_on_button_hovered.bind(sound));
 	sound.mouse_exited.connect(_on_button_blur.bind(volumetric_fog));
 	sound.toggled.connect(_on_sound_toggled);
+	
+	ssao.mouse_entered.connect(_on_button_hovered.bind(ssao));
+	ssao.mouse_exited.connect(_on_button_blur.bind(ssao));
+	ssao.toggled.connect(_on_ssao_toggled);
+
+	render_quality_option_button.mouse_entered.connect(_on_button_hovered.bind(render_quality_option_button));
+	render_quality_option_button.mouse_exited.connect(_on_button_blur.bind(render_quality_option_button));
+	render_quality_option_button.item_selected.connect(_on_render_quality_change);
+	
+	render_quality_label.mouse_entered.connect(func tmp(): render_quality_option_button.grab_focus());
