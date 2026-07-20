@@ -36,6 +36,42 @@ volumetric_fog_anisotropy = 0.5
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_ushii")
 
+[sub_resource type="Animation" id="Animation_otdy6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ushii"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.11764706, 0.11764706, 0.11764706, 1), Color(0.12, 0.12, 0.12, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4m7l3"]
+_data = {
+&"RESET": SubResource("Animation_otdy6"),
+&"fade_in": SubResource("Animation_ushii")
+}
+
 [node name="Node3D" type="Node3D" unique_id=1850968878]
 script = ExtResource("1_ensjn")
 
@@ -71,6 +107,7 @@ theme_override_constants/margin_left = 64
 theme_override_constants/margin_bottom = 64
 
 [node name="GameMode" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1491187242]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -148,15 +185,25 @@ text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
 
 [node name="Settings" type="VBoxContainer" parent="CanvasLayer/Container/MenuContainer" unique_id=1560123204]
-visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Sound" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=164797440]
+[node name="VolumetricFog" type="HBoxContainer" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1341808383]
 layout_mode = 2
+
+[node name="VolumetricFog" type="CheckButton" parent="CanvasLayer/Container/MenuContainer/Settings/VolumetricFog" unique_id=717536645]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAIN_MENU_SETTINGS_VOLUMETRIC_FOG"
+
+[node name="Sound" type="HBoxContainer" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=894864620]
+layout_mode = 2
+
+[node name="Sound" type="CheckButton" parent="CanvasLayer/Container/MenuContainer/Settings/Sound" unique_id=1375268119]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "MAIN_MENU_SETTINGS_SOUND"
-alignment = 0
 
 [node name="WindowSize" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1743068772]
 layout_mode = 2
@@ -168,10 +215,23 @@ layout_mode = 2
 text = "MAIN_MENU_SETTINGS_LANGAGE"
 alignment = 0
 
-[node name="CancelToGameMode" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=2072836239]
+[node name="FromSettingsToGameMode" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=2072836239]
 layout_mode = 2
 text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
 
+[node name="BlackScreen" type="ColorRect" parent="CanvasLayer" unique_id=1619987066]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Room2" parent="." unique_id=146700209 instance=ExtResource("3_otdy6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3450184, -0.015658379, 0.10160494)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=790391492]
+libraries/ = SubResource("AnimationLibrary_4m7l3")

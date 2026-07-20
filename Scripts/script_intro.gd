@@ -1,7 +1,6 @@
 extends Control
 
 const			SceneMainMenu: String = "res://Scenes/scene_main_menu.tscn";
-@onready var	NodeLabel: Label = $CenterContainer/VBoxContainer/Label;
 @onready var	NodeAnimationPlayer: AnimationPlayer = $AnimationPlayer;
 var				Done: bool = false;
 var				AnimTimeFadeIn: int = 0;
@@ -17,7 +16,6 @@ func _on_animation_finished(_anim_name: String):
 
 func _ready() -> void:
 	ResourceLoader.load_threaded_request(SceneMainMenu);
-	NodeLabel.text = "0%";
 	NodeAnimationPlayer.animation_finished.connect(_on_animation_finished);
 
 func _process(_delta: float) -> void:
@@ -25,7 +23,6 @@ func _process(_delta: float) -> void:
 		var progress: Array = [];
 		var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(SceneMainMenu, progress);
 
-		NodeLabel.text = str(progress[0] * 100) + "%";
 		match status:
 			ResourceLoader.THREAD_LOAD_LOADED:
 				if (AnimTimeFadeIn > 0 and Time.get_ticks_msec() - TimeStamps >= 5000):
