@@ -10,9 +10,19 @@ extends Node3D
 @onready var volumetric_fog: CheckButton = $CanvasLayer/Container/MenuContainer/Settings/VolumetricFog/VolumetricFog;
 @onready var sound: CheckButton = $CanvasLayer/Container/MenuContainer/Settings/Sound/Sound;
 @onready var world_environment: WorldEnvironment = $WorldEnvironment;
-@onready var ssao: CheckButton = $CanvasLayer/Container/MenuContainer/Settings/SSAO/SSAO
-@onready var render_quality_option_button: OptionButton = $CanvasLayer/Container/MenuContainer/Settings/RenderQuality/RenderQualityOptionButton
-@onready var render_quality_label: Label = $CanvasLayer/Container/MenuContainer/Settings/RenderQuality/MarginContainer/RenderQualityLabel
+@onready var ssao: CheckButton = $CanvasLayer/Container/MenuContainer/Settings/SSAO/SSAO;
+@onready var render_quality_option_button: OptionButton = $CanvasLayer/Container/MenuContainer/Settings/RenderQuality/RenderQualityOptionButton;
+@onready var render_quality_label: Label = $CanvasLayer/Container/MenuContainer/Settings/RenderQuality/MarginContainer/RenderQualityLabel;
+@onready var langage_label: Label = $CanvasLayer/Container/MenuContainer/Settings/Langage/MarginContainer/LangageLabel;
+@onready var langage_option_button: OptionButton = $CanvasLayer/Container/MenuContainer/Settings/Langage/LangageOptionButton;
+@onready var camera_3d: Camera3D = $Camera3D;
+@onready var camera_target: Marker3D = $CameraTarget;
+
+enum  MenuStatus { IN_MENU, IN_GAME };
+
+var	current_status: MenuStatus = MenuStatus.IN_MENU;
+
+@export var	user_control: bool = true;
 
 func	_on_button_hovered(button: Button):
 	button.grab_focus();
@@ -27,13 +37,20 @@ func	open_menu_and_hide_others(menu_name: String, target: Node):
 			child.visible = true;
 		else:
 			child.visible = false;
-	target.get_child(0).grab_focus();
+	
+	if target.get_child(0) is HBoxContainer:
+		target.get_child(0).get_child(1).grab_focus();
+	else:
+		target.get_child(0).grab_focus();
 
 func	_on_button_pressed(button: Button):
+	if not user_control:
+		return ;
 	create_tween().tween_property(button, "scale", Vector2(0.95, 0.95), 0.1);
 	match button.name:
 		"Normal":
-			open_menu_and_hide_others("normal_mode", normal_mode_node);
+			open_menu_and_hide_others("NormalMode", normal_mode_node);
+			animation_player.play("animation_camera_menu_to_mode");
 		"Test":
 			open_menu_and_hide_others("TestMode", test_mode_node);
 		"Settings":
@@ -46,6 +63,9 @@ func	_on_button_pressed(button: Button):
 			pass;
 		"Level3":
 			pass;
+		"CancelFromNormalMode":
+			open_menu_and_hide_others("GameMode", game_mode_node);
+			animation_player.play("animation_camera_menu_to_mode_backward");
 		"CancelToGameMode":
 			open_menu_and_hide_others("GameMode", game_mode_node);
 		"FromSettingsToGameMode":
@@ -77,20 +97,25 @@ func _on_render_quality_change(idx: int) -> void:
 
 	get_viewport().scaling_3d_scale = value;
 
+func	_on_langage_change(idx: int) -> void:
+	const lng_array: Array[String] = ["en", "fr"];
+
+	TranslationServer.set_locale(lng_array[idx]);
 
 func	_save_current_state() -> void:
 	var config: ConfigFile = ConfigFile.new();
 	var err: Error = config.load("user://user_settings.cfg");
-	
+
 	if err != OK:
 		_create_new_save();
 		return ;
 
-	config.set_value("Accessibility", "langage", "en");
+	config.set_value("Accessibility", "langage", langage_option_button.selected);
 	config.set_value("Graphics", "volumetric_fog", world_environment.environment.volumetric_fog_enabled);
 	config.set_value("Graphics", "ssao", world_environment.environment.ssao_enabled);
 	config.set_value("Graphics", "render_quality", render_quality_option_button.selected);
 	config.set_value("Sound", "enabled", sound.button_pressed);
+	config.set_value("Accessibility", "langage", langage_option_button.selected);
 
 	var err_save: Error = config.save("user://user_settings.cfg");
 	if err_save != OK:
@@ -99,7 +124,7 @@ func	_save_current_state() -> void:
 func	_create_new_save() -> void:
 	var config: ConfigFile = ConfigFile.new();
 
-	config.set_value("Accessibility", "langage", "en");
+	config.set_value("Accessibility", "langage", 0);
 
 	config.set_value("Graphics", "volumetric_fog", true);
 	world_environment.environment.volumetric_fog_enabled = true;
@@ -124,31 +149,34 @@ func	_create_new_save() -> void:
 func	_read_save_state_and_apply() -> void:
 	var config: ConfigFile = ConfigFile.new();
 	var err: Error = config.load("user://user_settings.cfg");
-	
+
 	if err != OK:
 		_create_new_save();
 		return ;
 
-	config.get_value("Accessibility", "langage"); # set the current langage
+	var config_value: Variant = config.get_value("Accessibility", "langage");
+	if typeof(config_value) == TYPE_INT:
+		langage_option_button.selected = config_value;
+		_on_langage_change(config_value);
 
-	var read_volumetric_fog: Variant = config.get_value("Graphics", "volumetric_fog");
-	if typeof(read_volumetric_fog) == TYPE_BOOL:
-		world_environment.environment.volumetric_fog_enabled = read_volumetric_fog;
-		volumetric_fog.set_pressed_no_signal(read_volumetric_fog);
+	config_value = config.get_value("Graphics", "volumetric_fog");
+	if typeof(config_value) == TYPE_BOOL:
+		world_environment.environment.volumetric_fog_enabled = config_value;
+		volumetric_fog.set_pressed_no_signal(config_value);
 
-	var read_ssao_status = config.get_value("Graphics", "ssao");
-	if typeof(read_ssao_status) == TYPE_BOOL:
-		world_environment.environment.ssao_enabled = read_ssao_status;
-		ssao.set_pressed_no_signal(read_ssao_status);
+	config_value = config.get_value("Graphics", "ssao");
+	if typeof(config_value) == TYPE_BOOL:
+		world_environment.environment.ssao_enabled = config_value;
+		ssao.set_pressed_no_signal(config_value);
 
-	var read_render_quality_status = config.get_value("Graphics", "render_quality");
-	if typeof(read_render_quality_status) == TYPE_INT:
-		render_quality_option_button.selected = read_render_quality_status;
-		_on_render_quality_change(read_render_quality_status);
+	config_value = config.get_value("Graphics", "render_quality");
+	if typeof(config_value) == TYPE_INT:
+		render_quality_option_button.selected = config_value;
+		_on_render_quality_change(config_value);
 
-	var read_sound_status = config.get_value("Sound", "enabled");
-	if typeof(read_sound_status) == TYPE_BOOL:
-		sound.set_pressed_no_signal(read_sound_status);
+	config_value = config.get_value("Sound", "enabled");
+	if typeof(config_value) == TYPE_BOOL:
+		sound.set_pressed_no_signal(config_value);
 
 
 func	_ready() -> void:
@@ -186,4 +214,12 @@ func	_ready() -> void:
 	render_quality_option_button.mouse_exited.connect(_on_button_blur.bind(render_quality_option_button));
 	render_quality_option_button.item_selected.connect(_on_render_quality_change);
 	
+	langage_option_button.mouse_entered.connect(_on_button_hovered.bind(langage_option_button));
+	langage_option_button.mouse_exited.connect(_on_button_blur.bind(langage_option_button));
+	langage_option_button.item_selected.connect(_on_langage_change);
+	
 	render_quality_label.mouse_entered.connect(func tmp(): render_quality_option_button.grab_focus());
+	langage_label.mouse_entered.connect(func tmp(): langage_option_button.grab_focus());
+
+func	_process(_delta: float) -> void:
+	pass;

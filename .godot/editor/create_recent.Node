@@ -1,3 +1,5 @@
+Marker3D
+MeshInstance3D
 TextureRect
 MarginContainer
 Label
@@ -11,5 +13,3 @@ ColorRect
 AreaLight3D
 OmniLight3D
 Decal
-SpotLight3D
-Button

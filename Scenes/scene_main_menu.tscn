@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2cnvcss53go4" path="res://Scripts/script_main_menu.gd" id="1_ensjn"]
 [ext_resource type="Theme" uid="uid://dxy46hlyrvs6m" path="res://Themes/InTheShadow.theme" id="1_rmxsk"]
+[ext_resource type="Script" uid="uid://n5itid65q1h7" path="res://Scripts/script_camera.gd" id="2_ushii"]
 [ext_resource type="PackedScene" uid="uid://btr2fpo6squ73" path="res://Assets/RES/Room.res" id="3_otdy6"]
 
 [sub_resource type="Gradient" id="Gradient_otdy6"]
@@ -62,6 +63,282 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.6564093, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.4264119, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.1780574, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CameraTarget:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CameraTarget:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.6614985, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CameraTarget:position:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.3727503, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera3D:process_mode")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:user_control")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4m7l3"]
+resource_name = "animation_camera_menu_to_mode"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.6564093, -0.25, 0, 0.25, 0, -0.073001854, -0.8333334, -0.26390123, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.4264119, -0.25, 0, 0.25, 0, 2.9066691, -0.8333334, -0.080042884, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.1780574, -0.25, 0, 0.25, 0, 2.280387, -0.8333334, -0.017054917, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraTarget:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.1, -0.8333334, 0.016666668, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CameraTarget:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.6614985, -0.25, 0, 0.25, 0, 2.936, -0.8333334, -0.04575026, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CameraTarget:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.3727503, -0.25, 0, 0.25, 0, 3.683, -0.8333334, -0.051708303, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D:process_mode")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:user_control")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_fffia"]
+resource_name = "animation_camera_menu_to_mode_backward"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.073001854, -0.8333334, -0.26390123, 0, 0, -1.6564093, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.9066691, -0.8333334, -0.080042884, 0, 0, 2.4264119, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.280387, -0.8333334, -0.017054917, 0, 0, 2.1780574, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraTarget:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.1, -0.8333334, 0.016666668, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CameraTarget:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.936, -0.8333334, -0.04575026, 0, 0, 2.6614985, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CameraTarget:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.683, -0.8333334, -0.051708303, 0, 0, 3.3727503, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D:process_mode")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:user_control")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_ushii"]
 resource_name = "fade_in"
@@ -81,8 +358,13 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4m7l3"]
 _data = {
 &"RESET": SubResource("Animation_otdy6"),
+&"animation_camera_menu_to_mode": SubResource("Animation_4m7l3"),
+&"animation_camera_menu_to_mode_backward": SubResource("Animation_fffia"),
 &"fade_in": SubResource("Animation_ushii")
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_66ew8"]
+size = Vector3(0.25, 0.25, 0.25)
 
 [node name="Node3D" type="Node3D" unique_id=1850968878]
 script = ExtResource("1_ensjn")
@@ -99,8 +381,13 @@ shadow_bias = 0.0
 shadow_reverse_cull_face = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1465227927]
-transform = Transform3D(-0.6222862, -0.06544314, -0.78004944, 0, 0.9964992, -0.08360244, 0.7827898, -0.052024648, -0.6201077, -1.6564093, 2.4264119, 2.1780572)
+process_mode = 3
+transform = Transform3D(-0.58497477, -0.09274681, -0.80573094, 0, 0.9934401, -0.11435379, 0.81105137, -0.06689409, -0.58113736, -1.6564093, 2.4264119, 2.1780574)
 fov = 60.0
+script = ExtResource("2_ushii")
+
+[node name="CameraTarget" type="Marker3D" parent="." unique_id=1442277515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6614985, 3.3727503)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067221232]
 
@@ -177,7 +464,7 @@ layout_mode = 2
 text = "Level3"
 alignment = 0
 
-[node name="CancelToGameMode" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2115089075]
+[node name="CancelFromNormalMode" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2115089075]
 layout_mode = 2
 text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
@@ -269,17 +556,39 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_top = NodePath("../../Sound/Sound")
-focus_neighbor_bottom = NodePath("../../Langage")
+focus_neighbor_bottom = NodePath("../../Langage/LangageOptionButton")
 text = "SSAO"
 
-[node name="Langage" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1807595934]
+[node name="Langage" type="HBoxContainer" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=1872807595]
 layout_mode = 2
-focus_neighbor_top = NodePath("../SSAO/SSAO")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Container/MenuContainer/Settings/Langage" unique_id=971011850]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+
+[node name="LangageLabel" type="Label" parent="CanvasLayer/Container/MenuContainer/Settings/Langage/MarginContainer" unique_id=1339872144]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
 text = "MAIN_MENU_SETTINGS_LANGAGE"
-alignment = 0
+
+[node name="LangageOptionButton" type="OptionButton" parent="CanvasLayer/Container/MenuContainer/Settings/Langage" unique_id=455986630]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../SSAO/SSAO")
+focus_neighbor_bottom = NodePath("../../FromSettingsToGameMode")
+focus_behavior_recursive = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "French"
+popup/item_1/id = 1
 
 [node name="FromSettingsToGameMode" type="Button" parent="CanvasLayer/Container/MenuContainer/Settings" unique_id=2072836239]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Langage/LangageOptionButton")
+focus_neighbor_bottom = NodePath("../RenderQuality/MarginContainer/RenderQualityLabel")
 text = "MAIN_MENU_BACK_LABEL"
 alignment = 0
 
@@ -297,3 +606,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3450184, -0.015658379, 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=790391492]
 libraries/ = SubResource("AnimationLibrary_4m7l3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1636811008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99260664, 3.3656528, 4.2220187)
+mesh = SubResource("BoxMesh_66ew8")

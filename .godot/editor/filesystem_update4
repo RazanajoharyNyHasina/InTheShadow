@@ -1,7 +1,4 @@
-res://Locales/translation.en.translation
-res://Locales/translation.fr.translation
 res://Scenes/scene_main_menu.tscn
 res://Shaders/Paper.gdshader
 res://Scripts/script_main_menu.gd
-res://Locales/translation.csv
-res://Themes/InTheShadow.theme
+res://Scripts/script_camera.gd
