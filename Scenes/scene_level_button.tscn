@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://5etqydfso771"]
+
+[ext_resource type="Script" uid="uid://bpjlamv21iwpv" path="res://Scripts/script_level_button.gd" id="1_7tqhe"]
+[ext_resource type="FontFile" uid="uid://w8r3y47digks" path="res://Fonts/Montserrat/Montserrat-Regular.ttf" id="1_dt0ky"]
+[ext_resource type="ArrayMesh" uid="uid://direx7nvofrma" path="res://Assets/RES/box.res" id="2_njjjo"]
+
+[node name="LevelButton" type="Node3D" unique_id=811033495]
+script = ExtResource("1_7tqhe")
+
+[node name="Box" type="MeshInstance3D" parent="." unique_id=590364880]
+mesh = ExtResource("2_njjjo")
+
+[node name="LevelHint" type="Label3D" parent="." unique_id=403566358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3283183, 0.067993164)
+text = "Meow"
+font = ExtResource("1_dt0ky")
+font_size = 12

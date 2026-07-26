@@ -17,8 +17,9 @@ extends Node3D
 @onready var langage_option_button: OptionButton = $CanvasLayer/Container/MenuContainer/Settings/Langage/LangageOptionButton;
 @onready var camera_3d: Camera3D = $Camera3D;
 @onready var camera_target: Marker3D = $CameraTarget;
+@onready var darken_background: TextureRect = $CanvasLayer/DarkenBackground
 
-enum  MenuStatus { IN_MENU, IN_GAME };
+enum  MenuStatus { IN_MENU, IN_LEVEL_SELECTION, IN_GAME };
 
 var	current_status: MenuStatus = MenuStatus.IN_MENU;
 
@@ -31,17 +32,18 @@ func	_on_button_hovered(button: Button):
 func	_on_button_blur(button: Button):
 	create_tween().tween_property(button, "scale", Vector2(1.0, 1.0), 0.1);
 
-func	open_menu_and_hide_others(menu_name: String, target: Node):
+func	open_menu_and_hide_others(menu_name: String, target: Node, focus_child: bool = true):
 	for child in menu_container_node.get_children():
 		if (child.name == menu_name):
 			child.visible = true;
 		else:
 			child.visible = false;
 	
-	if target.get_child(0) is HBoxContainer:
-		target.get_child(0).get_child(1).grab_focus();
-	else:
-		target.get_child(0).grab_focus();
+	if focus_child:
+		if target.get_child(0) is HBoxContainer:
+			target.get_child(0).get_child(1).grab_focus();
+		else:
+			target.get_child(0).grab_focus();
 
 func	_on_button_pressed(button: Button):
 	if not user_control:
@@ -49,8 +51,10 @@ func	_on_button_pressed(button: Button):
 	create_tween().tween_property(button, "scale", Vector2(0.95, 0.95), 0.1);
 	match button.name:
 		"Normal":
-			open_menu_and_hide_others("NormalMode", normal_mode_node);
+			open_menu_and_hide_others("NormalMode", normal_mode_node, false);
 			animation_player.play("animation_camera_menu_to_mode");
+			current_status = MenuStatus.IN_LEVEL_SELECTION;
+			create_tween().tween_property(darken_background, "position", Vector2(0.0, 341.0), 0.5);
 		"Test":
 			open_menu_and_hide_others("TestMode", test_mode_node);
 		"Settings":
@@ -66,6 +70,8 @@ func	_on_button_pressed(button: Button):
 		"CancelFromNormalMode":
 			open_menu_and_hide_others("GameMode", game_mode_node);
 			animation_player.play("animation_camera_menu_to_mode_backward");
+			current_status = MenuStatus.IN_MENU;
+			create_tween().tween_property(darken_background, "position", Vector2(0.0, -8.0), 0.5);
 		"CancelToGameMode":
 			open_menu_and_hide_others("GameMode", game_mode_node);
 		"FromSettingsToGameMode":

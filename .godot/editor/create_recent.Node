@@ -1,5 +1,7 @@
-Marker3D
+Node3D
+Label3D
 MeshInstance3D
+Marker3D
 TextureRect
 MarginContainer
 Label
@@ -11,5 +13,3 @@ CheckButton
 AnimationPlayer
 ColorRect
 AreaLight3D
-OmniLight3D
-Decal

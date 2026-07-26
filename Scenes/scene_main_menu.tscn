@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://dxy46hlyrvs6m" path="res://Themes/InTheShadow.theme" id="1_rmxsk"]
 [ext_resource type="Script" uid="uid://n5itid65q1h7" path="res://Scripts/script_camera.gd" id="2_ushii"]
 [ext_resource type="PackedScene" uid="uid://btr2fpo6squ73" path="res://Assets/RES/Room.res" id="3_otdy6"]
+[ext_resource type="PackedScene" uid="uid://5etqydfso771" path="res://Scenes/scene_level_button.tscn" id="5_4m7l3"]
 
 [sub_resource type="Gradient" id="Gradient_otdy6"]
 colors = PackedColorArray(0.003940095, 0.0034905493, 0.025453424, 1, 1, 1, 1, 1)
@@ -30,7 +31,7 @@ ssao_intensity = 3.0
 ssil_intensity = 16.0
 sdfgi_read_sky_light = false
 glow_enabled = true
-glow_bloom = 1.0
+glow_bloom = 0.42
 glow_blend_mode = 0
 volumetric_fog_enabled = true
 volumetric_fog_anisotropy = 0.5
@@ -363,10 +364,7 @@ _data = {
 &"fade_in": SubResource("Animation_ushii")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_66ew8"]
-size = Vector3(0.25, 0.25, 0.25)
-
-[node name="Node3D" type="Node3D" unique_id=1850968878]
+[node name="MainRoom" type="Node3D" unique_id=1850968878]
 script = ExtResource("1_ensjn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=358021082]
@@ -448,21 +446,6 @@ visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
-
-[node name="NormalModeLevel1" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2031850155]
-layout_mode = 2
-text = "Level1"
-alignment = 0
-
-[node name="NormalModeLevel2" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=583437091]
-layout_mode = 2
-text = "Level2"
-alignment = 0
-
-[node name="NormalModeLevel3" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=1769779681]
-layout_mode = 2
-text = "Level3"
-alignment = 0
 
 [node name="CancelFromNormalMode" type="Button" parent="CanvasLayer/Container/MenuContainer/NormalMode" unique_id=2115089075]
 layout_mode = 2
@@ -607,6 +590,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3450184, -0.015658379, 0.1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=790391492]
 libraries/ = SubResource("AnimationLibrary_4m7l3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1636811008]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99260664, 3.3656528, 4.2220187)
-mesh = SubResource("BoxMesh_66ew8")
+[node name="Level" type="Node3D" parent="." unique_id=1509992706]
+
+[node name="Level1" parent="Level" unique_id=811033495 instance=ExtResource("5_4m7l3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.1504, 3.3656528, 4.2220187)
+
+[node name="Level2" parent="Level" unique_id=75932131 instance=ExtResource("5_4m7l3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.70732033, 3.1468232, 4.2220187)
+
+[node name="Level3" parent="Level" unique_id=2104711203 instance=ExtResource("5_4m7l3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.15377268, 3.1968827, 4.2220187)
+
+[node name="Level4" parent="Level" unique_id=751739347 instance=ExtResource("5_4m7l3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.3671719, 2.9543037, 4.2220187)
+
+[node name="Level5" parent="Level" unique_id=259848384 instance=ExtResource("5_4m7l3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.80431783, 3.2157805, 4.2220187)
+
+[node name="Level6" parent="Level" unique_id=346964067 instance=ExtResource("5_4m7l3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.2373091, 3.4637916, 4.2220187)
+
+[node name="Level7" parent="Level" unique_id=1309013243 instance=ExtResource("5_4m7l3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.6026326, 2.7862012, 4.2220187)
