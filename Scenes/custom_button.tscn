@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://4lo6jtbmp0ly"]
+
+[ext_resource type="Theme" uid="uid://duy10dtbxddya" path="res://Themes/theme_user_interface.res" id="1_06rdv"]
+[ext_resource type="Script" uid="uid://bfgy3cga0qmtd" path="res://Scripts/custom_button.gd" id="1_6yys7"]
+
+[node name="CustomButton" type="Button" unique_id=1240446857]
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_06rdv")
+alignment = 2
+script = ExtResource("1_6yys7")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://dle1jw5bvd77g"]
+
+[ext_resource type="Script" uid="uid://s4pdyydks7v5" path="res://Scripts/options_menu.gd" id="1_tqe32"]
+[ext_resource type="Environment" uid="uid://em8wp816owyt" path="res://Resources/environment.res" id="2_tqe32"]
+[ext_resource type="ArrayMesh" uid="uid://co68iinh2g0cr" path="res://Objects/obj_gear.obj" id="3_qfavn"]
+[ext_resource type="Script" uid="uid://cep4e4ubncllx" path="res://Scripts/effect_infinite_rotation.gd" id="4_syw6n"]
+[ext_resource type="PackedScene" uid="uid://4lo6jtbmp0ly" path="res://Scenes/custom_button.tscn" id="5_cvaji"]
+[ext_resource type="PackedScene" uid="uid://b2ld1h83fau0u" path="res://Scenes/custom_option_button.tscn" id="5_qfavn"]
+[ext_resource type="PackedScene" uid="uid://c1pe8s7qcfmha" path="res://Scenes/custom_check_button.tscn" id="6_qfavn"]
+[ext_resource type="PackedScene" uid="uid://u6juxeq5aaah" path="res://Scenes/custom_horizontal_slider.tscn" id="7_syw6n"]
+
+[sub_resource type="Animation" id="Animation_trj04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_16hvj"]
+resource_name = "animation_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_opfnp"]
+resource_name = "animation_out"
+length = 1.3333367362055928
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vr1f0"]
+_data = {
+&"RESET": SubResource("Animation_trj04"),
+&"animation_in": SubResource("Animation_16hvj"),
+&"animation_out": SubResource("Animation_opfnp")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cp0ys"]
+
+[node name="OptionsMenu" type="Node3D" unique_id=1812116634]
+script = ExtResource("1_tqe32")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=453705522]
+transform = Transform3D(-0.81238085, -0.30051243, 0.4997294, 0.5537506, -0.12899157, 0.82263094, -0.18274999, 0.9450152, 0.27119923, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1694396117]
+environment = ExtResource("2_tqe32")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1945710509]
+libraries/ = SubResource("AnimationLibrary_vr1f0")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=252559475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5179689, 0)
+fov = 90.0
+
+[node name="ObjGear" type="MeshInstance3D" parent="." unique_id=1231651007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.503, -0.627)
+mesh = ExtResource("3_qfavn")
+script = ExtResource("4_syw6n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1108506023]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=145409869]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -584.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cp0ys")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer" unique_id=81375576]
+layout_mode = 2
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer" unique_id=1151910814]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="RenderQuality" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1937860976 instance=ExtResource("5_qfavn")]
+layout_mode = 2
+label = "OPTIONS_MENU_RENDER_QUALITY_BUTTON"
+options_list = Array[String](["FHD", "HD", "SD"])
+grab_focus_on_ready = true
+
+[node name="Langage" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=225881986 instance=ExtResource("5_qfavn")]
+layout_mode = 2
+label = "OPTIONS_MENU_LANGAGE_BUTTON"
+options_list = Array[String](["EN", "FR"])
+
+[node name="Fullscreen" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=67583873 instance=ExtResource("6_qfavn")]
+layout_mode = 2
+text = "OPTIONS_MENU_FULLSCREEN_TOGGLE_BUTTON"
+alignment = 2
+
+[node name="MusicVolume" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=152329788 instance=ExtResource("7_syw6n")]
+layout_mode = 2
+label = "OPTIONS_MENU_MUSIC_VOLUME_SLIDER"
+max_value = 100.0
+
+[node name="Back" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1746399451 instance=ExtResource("5_cvaji")]
+layout_mode = 2
+text = "GLOBAL_BACK_BUTTON"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=783732214]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/RenderQuality" to="." method="_on_custom_option_button_mouse_entered"]
+[connection signal="on_item_selected" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/RenderQuality" to="." method="_on_custom_option_button_on_item_selected"]
+[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Langage" to="." method="_on_custom_option_button_mouse_entered"]
+[connection signal="on_item_selected" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Langage" to="." method="_on_langage_on_item_selected"]
+[connection signal="toggled" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_custom_check_button_toggled"]
+[connection signal="on_slider_value_changed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicVolume" to="." method="_on_custom_horizontal_slider_on_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

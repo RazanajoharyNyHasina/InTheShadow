@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://u6juxeq5aaah"]
+
+[ext_resource type="Theme" uid="uid://duy10dtbxddya" path="res://Themes/theme_user_interface.res" id="1_byoxj"]
+[ext_resource type="Script" uid="uid://d3gsfx5k8vgu6" path="res://Scripts/custom_horizontal_slider.gd" id="1_w8kh8"]
+
+[node name="CustomHorizontalSlider" type="HBoxContainer" unique_id=152329788]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_byoxj")
+alignment = 1
+script = ExtResource("1_w8kh8")
+
+[node name="Label" type="Label" parent="." unique_id=1786586038]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="." unique_id=143200363]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="HSlider" to="." method="_on_h_slider_mouse_entered"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

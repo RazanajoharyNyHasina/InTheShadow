@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://cata36h6lagbc"]
+
+[ext_resource type="Script" uid="uid://4fsbilt2k71w" path="res://Scripts/level_logic.gd" id="1_clbxe"]
+[ext_resource type="ArrayMesh" uid="uid://btw863pg1h8pu" path="res://Objects/logo-4.obj" id="2_s3iv1"]
+[ext_resource type="Shader" uid="uid://cayvt404qgttf" path="res://Shaders/shader_object_mesh.res" id="3_8sbkv"]
+[ext_resource type="ArrayMesh" uid="uid://blekjtewf0ey6" path="res://Objects/logo-2.obj" id="4_kii0x"]
+[ext_resource type="Shape3D" uid="uid://5m2j6b8ol8db" path="res://Resources/position_checker_area.res" id="4_s3iv1"]
+[ext_resource type="ArrayMesh" uid="uid://cm4p40f5hqmed" path="res://Objects/obj_circular_rotation_collider.obj" id="6_2poqp"]
+[ext_resource type="Material" uid="uid://bj7mhdnux2lu0" path="res://Materials/material_debug_mesh_collider.res" id="7_2eme8"]
+[ext_resource type="Script" uid="uid://dn5qhr3v1eu4w" path="res://Scripts/constraint_keep_offset.gd" id="8_jb410"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fcgv"]
+render_priority = 0
+shader = ExtResource("3_8sbkv")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lh1tv"]
+data = PackedVector3Array(-0.2688, -0.0535, 0.034199998, -0.274, 0, 0.034199998, -0.2688, -0.0535, 0.0009, -0.2688, -0.0535, 0.0009, -0.274, 0, 0.034199998, -0.274, 0, 0.0009, -0.2532, -0.104899995, 0.0009, -0.2688, -0.0535, 0.034199998, -0.2688, -0.0535, 0.0009, -0.2532, -0.104899995, 0.034199998, -0.2688, -0.0535, 0.034199998, -0.2532, -0.104899995, 0.0009, -0.2279, -0.1523, 0.0009, -0.2532, -0.104899995, 0.034199998, -0.2532, -0.104899995, 0.0009, -0.2279, -0.1523, 0.034199998, -0.2532, -0.104899995, 0.034199998, -0.2279, -0.1523, 0.0009, -0.1938, -0.1938, 0.0009, -0.2279, -0.1523, 0.034199998, -0.2279, -0.1523, 0.0009, -0.1938, -0.1938, 0.034199998, -0.2279, -0.1523, 0.034199998, -0.1938, -0.1938, 0.0009, -0.1523, -0.2279, 0.0009, -0.1938, -0.1938, 0.034199998, -0.1938, -0.1938, 0.0009, -0.1523, -0.2279, 0.034199998, -0.1938, -0.1938, 0.034199998, -0.1523, -0.2279, 0.0009, -0.104899995, -0.2532, 0.0009, -0.1523, -0.2279, 0.034199998, -0.1523, -0.2279, 0.0009, -0.104899995, -0.2532, 0.034199998, -0.1523, -0.2279, 0.034199998, -0.104899995, -0.2532, 0.0009, -0.0535, -0.2688, 0.0009, -0.104899995, -0.2532, 0.034199998, -0.104899995, -0.2532, 0.0009, -0.0535, -0.2688, 0.034199998, -0.104899995, -0.2532, 0.034199998, -0.0535, -0.2688, 0.0009, 0, -0.274, 0.0009, -0.0535, -0.2688, 0.034199998, -0.0535, -0.2688, 0.0009, 0, -0.274, 0.034199998, -0.0535, -0.2688, 0.034199998, 0, -0.274, 0.0009, 0.0535, -0.2688, 0.0009, 0, -0.274, 0.034199998, 0, -0.274, 0.0009, 0.0535, -0.2688, 0.034199998, 0, -0.274, 0.034199998, 0.0535, -0.2688, 0.0009, 0.104899995, -0.2532, 0.0009, 0.0535, -0.2688, 0.034199998, 0.0535, -0.2688, 0.0009, 0.104899995, -0.2532, 0.034199998, 0.0535, -0.2688, 0.034199998, 0.104899995, -0.2532, 0.0009, 0.1522, -0.2279, 0.0009, 0.104899995, -0.2532, 0.034199998, 0.104899995, -0.2532, 0.0009, 0.1522, -0.2279, 0.034199998, 0.104899995, -0.2532, 0.034199998, 0.1522, -0.2279, 0.0009, 0.1938, -0.1938, 0.0009, 0.1522, -0.2279, 0.034199998, 0.1522, -0.2279, 0.0009, 0.1938, -0.1938, 0.034199998, 0.1522, -0.2279, 0.034199998, 0.1938, -0.1938, 0.0009, 0.2278, -0.1523, 0.0009, 0.1938, -0.1938, 0.034199998, 0.1938, -0.1938, 0.0009, 0.2278, -0.1523, 0.034199998, 0.1938, -0.1938, 0.034199998, 0.2278, -0.1523, 0.0009, 0.2532, -0.104899995, 0.0009, 0.2278, -0.1523, 0.034199998, 0.2278, -0.1523, 0.0009, 0.2532, -0.104899995, 0.034199998, 0.2278, -0.1523, 0.034199998, 0.2532, -0.104899995, 0.0009, 0.2688, -0.0535, 0.0009, 0.2532, -0.104899995, 0.034199998, 0.2532, -0.104899995, 0.0009, 0.2688, -0.0535, 0.034199998, 0.2532, -0.104899995, 0.034199998, 0.2688, -0.0535, 0.0009, 0.274, 0, 0.0009, 0.2688, -0.0535, 0.034199998, 0.2688, -0.0535, 0.0009, 0.274, 0, 0.034199998, 0.2688, -0.0535, 0.034199998, 0.274, 0, 0.0009, 0.2688, 0.0535, 0.0009, 0.274, 0, 0.034199998, 0.274, 0, 0.0009, 0.2688, 0.0535, 0.034199998, 0.274, 0, 0.034199998, 0.2688, 0.0535, 0.0009, 0.2532, 0.104899995, 0.0009, 0.2688, 0.0535, 0.034199998, 0.2688, 0.0535, 0.0009, 0.2532, 0.104899995, 0.034199998, 0.2688, 0.0535, 0.034199998, 0.2532, 0.104899995, 0.0009, 0.2278, 0.1522, 0.0009, 0.2532, 0.104899995, 0.034199998, 0.2532, 0.104899995, 0.0009, 0.2278, 0.1522, 0.034199998, 0.2532, 0.104899995, 0.034199998, 0.2278, 0.1522, 0.0009, 0.1938, 0.1938, 0.0009, 0.2278, 0.1522, 0.034199998, 0.2278, 0.1522, 0.0009, 0.1938, 0.1938, 0.034199998, 0.2278, 0.1522, 0.034199998, 0.1938, 0.1938, 0.0009, 0.1522, 0.2278, 0.0009, 0.1938, 0.1938, 0.034199998, 0.1938, 0.1938, 0.0009, 0.1522, 0.2278, 0.034199998, 0.1938, 0.1938, 0.034199998, 0.1522, 0.2278, 0.0009, 0.104899995, 0.2532, 0.0009, 0.1522, 0.2278, 0.034199998, 0.1522, 0.2278, 0.0009, 0.104899995, 0.2532, 0.034199998, 0.1522, 0.2278, 0.034199998, 0.104899995, 0.2532, 0.0009, 0.0535, 0.2688, 0.0009, 0.104899995, 0.2532, 0.034199998, 0.104899995, 0.2532, 0.0009, 0.0535, 0.2688, 0.034199998, 0.104899995, 0.2532, 0.034199998, 0.0535, 0.2688, 0.0009, 0, 0.274, 0.0009, 0.0535, 0.2688, 0.034199998, 0.0535, 0.2688, 0.0009, 0, 0.274, 0.034199998, 0.0535, 0.2688, 0.034199998, 0, 0.274, 0.0009, -0.0535, 0.2688, 0.0009, 0, 0.274, 0.034199998, 0, 0.274, 0.0009, -0.0535, 0.2688, 0.034199998, 0, 0.274, 0.034199998, -0.0535, 0.2688, 0.0009, -0.104899995, 0.2532, 0.0009, -0.0535, 0.2688, 0.034199998, -0.0535, 0.2688, 0.0009, -0.104899995, 0.2532, 0.034199998, -0.0535, 0.2688, 0.034199998, -0.104899995, 0.2532, 0.0009, -0.1523, 0.2278, 0.0009, -0.104899995, 0.2532, 0.034199998, -0.104899995, 0.2532, 0.0009, -0.1523, 0.2278, 0.034199998, -0.104899995, 0.2532, 0.034199998, -0.1523, 0.2278, 0.0009, -0.1938, 0.1938, 0.0009, -0.1523, 0.2278, 0.034199998, -0.1523, 0.2278, 0.0009, -0.1938, 0.1938, 0.034199998, -0.1523, 0.2278, 0.034199998, -0.1938, 0.1938, 0.0009, -0.2279, 0.1522, 0.0009, -0.1938, 0.1938, 0.034199998, -0.1938, 0.1938, 0.0009, -0.2279, 0.1522, 0.034199998, -0.1938, 0.1938, 0.034199998, -0.2279, 0.1522, 0.0009, -0.2532, 0.104899995, 0.0009, -0.2279, 0.1522, 0.034199998, -0.2279, 0.1522, 0.0009, -0.2532, 0.104899995, 0.034199998, -0.2279, 0.1522, 0.034199998, -0.2532, 0.104899995, 0.0009, -0.2688, 0.0535, 0.0009, -0.2532, 0.104899995, 0.034199998, -0.2532, 0.104899995, 0.0009, -0.2688, 0.0535, 0.034199998, -0.2532, 0.104899995, 0.034199998, -0.2688, 0.0535, 0.0009, -0.274, 0, 0.0009, -0.2688, 0.0535, 0.034199998, -0.2688, 0.0535, 0.0009, -0.274, 0, 0.034199998, -0.2688, 0.0535, 0.034199998, -0.274, 0, 0.0009)
+
+[node name="Level42Mesh" type="Node3D" unique_id=1762770880 node_paths=PackedStringArray("list_mesh", "list_raycast", "position_checker")]
+script = ExtResource("1_clbxe")
+list_mesh = [NodePath("4"), NodePath("2")]
+list_raycast = [NodePath("4/RayCast3D"), NodePath("4/RayCast3D2"), NodePath("2/RayCast3D"), NodePath("2/RayCast3D2")]
+position_checker = NodePath("4/PositionChecker")
+start_angle_addition = Array[Vector3]([Vector3(180, 23, -20), Vector3(70, 45, 12)])
+hint = "HINT_42"
+
+[node name="4" type="MeshInstance3D" parent="." unique_id=2057292159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11543849, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("2_s3iv1")
+surface_material_override/0 = SubResource("ShaderMaterial_2fcgv")
+
+[node name="RayCast3D" type="RayCast3D" parent="4" unique_id=44714631]
+target_position = Vector3(-0.3, 0, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="4" unique_id=711665015]
+target_position = Vector3(0, 0, 0.2)
+collision_mask = 2
+
+[node name="RotationColliderX_2" type="StaticBody3D" parent="4" unique_id=1941545998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072697476, 0.04525368, 6.315112e-05)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="4/RotationColliderX_2" unique_id=781420710]
+shape = ExtResource("4_s3iv1")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="RotationColliderX_2_Mirror" type="StaticBody3D" parent="4" unique_id=1306259235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34881055, 0.04525368, 6.315112e-05)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="4/RotationColliderX_2_Mirror" unique_id=2070211491]
+shape = ExtResource("4_s3iv1")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="RotationColliderZ_2" type="StaticBody3D" parent="4" unique_id=1326076421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.219608, 0.04787709, 0.14303856)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="4/RotationColliderZ_2" unique_id=1217502109]
+shape = ExtResource("4_s3iv1")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="PositionChecker" type="Area3D" parent="4" unique_id=165919108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21936868, 0.045680374, 0)
+visible = false
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="4/PositionChecker" unique_id=1247665742]
+shape = ExtResource("4_s3iv1")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="2" type="MeshInstance3D" parent="." unique_id=1421683130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.10393019, 0.045680374, 0)
+cast_shadow = 0
+mesh = ExtResource("4_kii0x")
+surface_material_override/0 = SubResource("ShaderMaterial_2fcgv")
+
+[node name="RayCast3D" type="RayCast3D" parent="2" unique_id=2011184695]
+target_position = Vector3(-0.15, 0, 0)
+collision_mask = 4
+
+[node name="RayCast3D2" type="RayCast3D" parent="2" unique_id=1552578625]
+target_position = Vector3(0, 0, 0.15)
+collision_mask = 8
+
+[node name="PositionCollider" type="StaticBody3D" parent="2" unique_id=1032182728]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="2/PositionCollider" unique_id=253968437]
+shape = ExtResource("4_s3iv1")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="RotationColliderX_4" type="MeshInstance3D" parent="." unique_id=409943325 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11543849, 0, -0.017337263)
+visible = false
+mesh = ExtResource("6_2poqp")
+surface_material_override/0 = ExtResource("7_2eme8")
+script = ExtResource("8_jb410")
+target = NodePath("../4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RotationColliderX_4" unique_id=103567298]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RotationColliderX_4/StaticBody3D" unique_id=2101465025]
+shape = SubResource("ConcavePolygonShape3D_lh1tv")
+
+[node name="RotationColliderZ_4" type="StaticBody3D" parent="." unique_id=304143381 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115540445, 0, 0.19747414)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("8_jb410")
+target = NodePath("../4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RotationColliderZ_4" unique_id=1665445240]
+shape = ExtResource("4_s3iv1")
+debug_color = Color(0, 1, 0, 1)

@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://2t45lisqakon"]
+
+[ext_resource type="Script" uid="uid://dbkiw6lirb0l8" path="res://Scripts/play_menu_3d.gd" id="1_l5jxf"]
+[ext_resource type="PackedScene" uid="uid://cetbv7jaluu41" path="res://Scenes/level_selection_3d_button.tscn" id="2_l28dp"]
+[ext_resource type="Texture2D" uid="uid://dvna0xt1eaiok" path="res://Textures/tex_elephant_solved_selection_button.png" id="3_q16d1"]
+[ext_resource type="Texture2D" uid="uid://dnxyrdwggvje4" path="res://Textures/tex_teapot_solved_selection_button.png" id="4_cl77v"]
+[ext_resource type="Texture2D" uid="uid://bx12smdpguydm" path="res://Textures/tex_globe_solved_selection_button.png" id="5_oaolg"]
+[ext_resource type="Texture2D" uid="uid://dafom8jr7xs20" path="res://Textures/tex_42_solved_selection_button.png" id="6_3j40w"]
+[ext_resource type="PackedScene" uid="uid://4lo6jtbmp0ly" path="res://Scenes/custom_button.tscn" id="7_hx2hj"]
+
+[sub_resource type="Environment" id="Environment_xo7up"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+ambient_light_source = 1
+
+[sub_resource type="Animation" id="Animation_sq4vd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7r6kj"]
+resource_name = "animation_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_w6lsl"]
+resource_name = "animation_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h6ie8"]
+_data = {
+&"RESET": SubResource("Animation_sq4vd"),
+&"animation_in": SubResource("Animation_7r6kj"),
+&"animation_out": SubResource("Animation_w6lsl")
+}
+
+[node name="MainMenu" type="Node3D" unique_id=2019997655]
+script = ExtResource("1_l5jxf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=214514148]
+environment = SubResource("Environment_xo7up")
+
+[node name="LevelButton" type="Node3D" parent="." unique_id=1251992883]
+
+[node name="Elephant" parent="LevelButton" unique_id=467956065 node_paths=PackedStringArray("left_button", "right_button") instance=ExtResource("2_l28dp")]
+allowed_transform = 0
+axe_constraint = 1
+left_button = NodePath("../42")
+right_button = NodePath("../Teapot")
+level_mesh_path = "uid://bcloy220lhl02"
+level_name = "Level 0"
+texture_2d = ExtResource("3_q16d1")
+
+[node name="Teapot" parent="LevelButton" unique_id=914801110 node_paths=PackedStringArray("left_button", "right_button") instance=ExtResource("2_l28dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+allowed_transform = 0
+left_button = NodePath("../Elephant")
+right_button = NodePath("../Planet")
+level_mesh_path = "uid://d1hfg35i7l1g"
+level_name = "Level 1"
+texture_2d = ExtResource("4_cl77v")
+
+[node name="Planet" parent="LevelButton" unique_id=227628259 node_paths=PackedStringArray("left_button", "right_button") instance=ExtResource("2_l28dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+left_button = NodePath("../Teapot")
+right_button = NodePath("../42")
+level_mesh_path = "uid://t62h40gnpxi"
+level_name = "Level 2"
+texture_2d = ExtResource("5_oaolg")
+
+[node name="42" parent="LevelButton" unique_id=1122204477 node_paths=PackedStringArray("left_button", "right_button") instance=ExtResource("2_l28dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+left_button = NodePath("../Planet")
+right_button = NodePath("../Elephant")
+level_mesh_path = "uid://cata36h6lagbc"
+level_name = "Level 3"
+texture_2d = ExtResource("6_3j40w")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1902107635]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1399988259]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1374857390]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Back" parent="CanvasLayer/MarginContainer" unique_id=1240446857 instance=ExtResource("7_hx2hj")]
+layout_mode = 2
+text = "GLOBAL_BACK_BUTTON"
+alignment = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1465811273]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1883078533]
+libraries/ = SubResource("AnimationLibrary_h6ie8")
+
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Back" to="." method="_on_back_pressed"]

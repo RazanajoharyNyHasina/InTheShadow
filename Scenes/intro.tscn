@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://8tk3l8alxkro"]
+
+[ext_resource type="Script" uid="uid://vtcghk1mk0lo" path="res://Scripts/intro.gd" id="1_b226h"]
+[ext_resource type="FontFile" uid="uid://w8r3y47digks" path="res://Fonts/Montserrat/Montserrat-Regular.ttf" id="2_duh1u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_opfnp"]
+font = ExtResource("2_duh1u")
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_alxvg"]
+font = ExtResource("2_duh1u")
+font_size = 24
+
+[sub_resource type="Animation" id="Animation_mecp6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/VBoxContainer/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/CenterContainer/VBoxContainer/Label2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b226h"]
+resource_name = "animation_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/VBoxContainer/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/CenterContainer/VBoxContainer/Label2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_duh1u"]
+resource_name = "animation_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/VBoxContainer/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_main_menu"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/CenterContainer/VBoxContainer/Label2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_alxvg"]
+_data = {
+&"RESET": SubResource("Animation_mecp6"),
+&"animation_in": SubResource("Animation_b226h"),
+&"animation_out": SubResource("Animation_duh1u")
+}
+
+[node name="Background" type="Control" unique_id=735175440]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b226h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=156642357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=526986641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=2131181566]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=372623654]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "RAKOTOARIVONY"
+label_settings = SubResource("LabelSettings_opfnp")
+
+[node name="Label2" type="Label" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1084787034]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "Razanajohary Ny Hasina"
+label_settings = SubResource("LabelSettings_alxvg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=136226291]
+libraries/ = SubResource("AnimationLibrary_alxvg")

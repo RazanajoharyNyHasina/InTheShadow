@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c1pe8s7qcfmha"]
+
+[ext_resource type="Script" uid="uid://b28nkr1dxuy3g" path="res://Scripts/custom_check_button.gd" id="1_c7br6"]
+[ext_resource type="Theme" uid="uid://duy10dtbxddya" path="res://Themes/theme_user_interface.res" id="1_pnm8x"]
+
+[node name="CustomCheckButton" type="CheckButton" unique_id=67583873]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pnm8x")
+script = ExtResource("1_c7br6")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

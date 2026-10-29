@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bdlsn40qwpyqr"]
+
+[ext_resource type="Script" uid="uid://ch4c5prkac8l1" path="res://Scripts/main_menu.gd" id="1_trj04"]
+[ext_resource type="Environment" uid="uid://em8wp816owyt" path="res://Resources/environment.res" id="2_cp0ys"]
+[ext_resource type="PackedScene" uid="uid://4lo6jtbmp0ly" path="res://Scenes/custom_button.tscn" id="5_cp0ys"]
+[ext_resource type="ArrayMesh" uid="uid://co68iinh2g0cr" path="res://Objects/obj_gear.obj" id="6_opfnp"]
+[ext_resource type="Script" uid="uid://cep4e4ubncllx" path="res://Scripts/effect_infinite_rotation.gd" id="7_cp0ys"]
+
+[sub_resource type="Animation" id="Animation_trj04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_16hvj"]
+resource_name = "animation_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_opfnp"]
+resource_name = "animation_out"
+length = 1.3333367362055928
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vr1f0"]
+_data = {
+&"RESET": SubResource("Animation_trj04"),
+&"animation_in": SubResource("Animation_16hvj"),
+&"animation_out": SubResource("Animation_opfnp")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cp0ys"]
+
+[node name="MainMenu" type="Node3D" unique_id=1812116634]
+script = ExtResource("1_trj04")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=453705522]
+transform = Transform3D(-0.81238085, -0.30051243, 0.4997294, 0.5537506, -0.12899157, 0.82263094, -0.18274999, 0.9450152, 0.27119923, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1694396117]
+environment = ExtResource("2_cp0ys")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1945710509]
+libraries/ = SubResource("AnimationLibrary_vr1f0")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=252559475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5179689, 0)
+fov = 90.0
+
+[node name="ObjGear" type="MeshInstance3D" parent="." unique_id=1231651007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5003309, 1.5033604, -0.6272205)
+mesh = ExtResource("6_opfnp")
+script = ExtResource("7_cp0ys")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1108506023]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=145409869]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cp0ys")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer" unique_id=81375576]
+layout_mode = 2
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer" unique_id=1151910814]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Play" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1240446857 instance=ExtResource("5_cp0ys")]
+layout_mode = 2
+text = "MAIN_MENU_PLAY_BUTTON"
+grab_focus_on_ready = true
+
+[node name="Test" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=495798059 instance=ExtResource("5_cp0ys")]
+layout_mode = 2
+text = "MAIN_MENU_TEST_BUTTON"
+
+[node name="Options" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=450280667 instance=ExtResource("5_cp0ys")]
+layout_mode = 2
+text = "MAIN_MENU_OPTIONS_BUTTON"
+
+[node name="Quit" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1746399451 instance=ExtResource("5_cp0ys")]
+layout_mode = 2
+text = "MAIN_MENU_QUIT_BUTTON"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=783732214]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Test" to="." method="_on_test_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

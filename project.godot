@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="InTheShadow"
-run/main_scene="uid://c07ubhijbexue"
+run/main_scene="uid://8tk3l8alxkro"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalVar="*uid://bh45quexi0j3u"
+UtilsFunction="*uid://bqdev487ebdvm"
+MusicManager="*uid://c01ugnc8ugrbb"
 
 [debug]
 
@@ -23,15 +31,24 @@ settings/stdout/print_fps=true
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
-window/size/resizable=false
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
 window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[input]
+
+enter_ui={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Locales/translation.en.translation", "res://Locales/translation.fr.translation")
+locale/translations=PackedStringArray("res://Locales/localization.en.translation", "res://Locales/localization.fr.translation")
 
 [physics]
 
@@ -40,4 +57,17 @@ locale/translations=PackedStringArray("res://Locales/translation.en.translation"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-anti_aliasing/quality/screen_space_aa=1
+environment/ssao/quality=0
+environment/ssil/quality=0
+environment/glow/upscale_mode=0
+environment/volumetric_fog/volume_size=16
+environment/volumetric_fog/volume_depth=16
+environment/volumetric_fog/use_filter=0
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)
+
+[shader_globals]
+
+global_shader_quality={
+"type": "int",
+"value": 0
+}

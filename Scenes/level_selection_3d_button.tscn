@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://cetbv7jaluu41"]
+
+[ext_resource type="Shader" uid="uid://dw0cjll8hyx2v" path="res://Shaders/shader_3d_button.res" id="1_1kn2u"]
+[ext_resource type="Script" uid="uid://13f2nth45ae8" path="res://Scripts/level_selection_3d_button.gd" id="1_5agpf"]
+[ext_resource type="ArrayMesh" uid="uid://67iglfxxnfms" path="res://Objects/obj_cube.obj" id="1_t72jl"]
+[ext_resource type="FontFile" uid="uid://w8r3y47digks" path="res://Fonts/Montserrat/Montserrat-Regular.ttf" id="4_pyn5w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kn2u"]
+render_priority = 0
+shader = ExtResource("1_1kn2u")
+
+[sub_resource type="Animation" id="Animation_pyn5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gswiv"]
+resource_name = "animation_in_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1.1, 1.1, 1.1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0), Vector3(0, -0.82728606, 0), Vector3(0, -0.82728606, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjsvh"]
+_data = {
+&"RESET": SubResource("Animation_pyn5w"),
+&"animation_unlocked": SubResource("Animation_gswiv")
+}
+
+[node name="LevelSelection3DButton" type="MeshInstance3D" unique_id=467956065]
+instance_shader_parameters/are_selected = false
+mesh = ExtResource("1_t72jl")
+surface_material_override/0 = SubResource("ShaderMaterial_1kn2u")
+script = ExtResource("1_5agpf")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=528902511]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, 1.2524556)
+billboard = 1
+no_depth_test = true
+alpha_antialiasing_mode = 1
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "Level 0"
+font = ExtResource("4_pyn5w")
+font_size = 42
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=873139004]
+transform = Transform3D(0.45, 0, 0, 0, -1.9670125e-08, 0.45, 0, -0.45, -1.9670125e-08, 0, 1.0053537, 4.347737e-08)
+modulate = Color(0, 0, 0, 1)
+billboard = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1537284171]
+libraries/ = SubResource("AnimationLibrary_qjsvh")

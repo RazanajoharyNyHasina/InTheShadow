@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="122.08894"
+   height="190.53641"
+   viewBox="0 0 30.522234 47.634102"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1"><marker
+       style="overflow:visible"
+       id="marker8"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="0.75"
+       markerHeight="0.75"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid"><path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         id="path8" /></marker><marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto"
+       markerWidth="0.75"
+       markerHeight="0.75"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid"><path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         id="path1" /></marker></defs><g
+     id="g231"
+     transform="translate(-16.738883,-8.18295)"><path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:2.83465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;stroke-dashoffset:3401.57;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 30.379908,9.600275 h 3.240182 c 6.77193,0 12.2237,5.45177 12.2237,12.2237 v 20.35205 c 0,6.77193 -5.45177,12.2237 -12.2237,12.2237 h -3.240182 c -6.77193,0 -12.2237,-5.45177 -12.2237,-12.2237 v -20.35205 c 0,-6.77193 5.45177,-12.2237 12.2237,-12.2237 z"
+       id="path5" /><path
+       style="display:none;fill:#ff9940;fill-opacity:1;stroke:#ff9940;stroke-width:2.83465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;stroke-dashoffset:3401.57;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 32,16.698275 c 0.208944,0 0.377155,0.168211 0.377155,0.377155 v 10.021551 c 0,0.208944 -0.168211,0.377155 -0.377155,0.377155 -0.208944,0 -0.377155,-0.168211 -0.377155,-0.377155 V 17.07543 c 0,-0.208944 0.168211,-0.377155 0.377155,-0.377155 z"
+       id="rect2" /><path
+       id="rect3"
+       style="display:inline;fill:#ff9940;fill-opacity:1;stroke:none;stroke-width:3.10813;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;stroke-dashoffset:3401.57;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 40.305445,15.416141 c -3.358267,-3.059266 -7.04381,-2.211376 -7.04381,-2.211376 v 13.975733 h 9.603944 c 0,0 0.798133,-8.705091 -2.560134,-11.764357 z" /><path
+       id="rect5"
+       style="display:none;fill:#bf7330;fill-opacity:1;stroke-width:3.15179;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dashoffset:3401.57;paint-order:markers stroke fill"
+       d="m 43.381805,7.5431032 c 2.149138,0 3.87931,1.7301723 3.87931,3.8793098 v 39.978452 c 0,2.149138 -1.730172,3.87931 -3.87931,3.87931 -2.149138,0 -3.87931,-1.730172 -3.87931,-3.87931 V 11.422413 c 0,-2.1491375 1.730172,-3.8793098 3.87931,-3.8793098 z m -22.79991,0 c 2.149138,0 3.87931,1.7301723 3.87931,3.8793098 v 39.978452 c 0,2.149138 -1.730172,3.87931 -3.87931,3.87931 -2.149137,0 -3.87931,-1.730172 -3.87931,-3.87931 V 11.422413 c 0,-2.1491375 1.730173,-3.8793098 3.87931,-3.8793098 z" /><path
+       id="path6"
+       style="display:none;fill:none;stroke:#ff9940;stroke-width:2.44913;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:none;stroke-dashoffset:3401.57;stroke-opacity:1;marker-start:url(#marker8);marker-end:url(#ArrowWide);paint-order:markers stroke fill"
+       d="m 36.885195,15.566046 c 3.387291,-3.471615 8.947533,-3.539974 12.419147,-0.152682 3.471615,3.38729 3.539973,8.947532 0.152683,12.419147 -3.38729,3.471615 -8.947534,3.539974 -12.419148,0.152684" /></g></svg>
