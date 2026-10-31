@@ -1,9 +1,2 @@
-res://Shaders/Paper.gdshader
-res://Scenes/scene_level_button.tscn
-res://Scenes/scene_main_menu.tscn
-res://Scripts/script_level_button.gd
-res://Shaders/shader_level_button.gdshader
-res://Scripts/script_camera.gd
-res://Resources/Box.res
-res://Assets/RES/box.res
-res://Scripts/script_main_menu.gd
+res://Locales/localization.en.translation
+res://Locales/localization.fr.translation
