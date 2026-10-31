@@ -43,6 +43,7 @@ hit_from_inside = true
 
 [node name="ElephantRotationColliderX" type="MeshInstance3D" parent="." unique_id=1308923671 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.015967578)
+visible = false
 mesh = ExtResource("4_5cltb")
 surface_material_override/0 = ExtResource("5_mfcf4")
 script = ExtResource("6_vd5dt")

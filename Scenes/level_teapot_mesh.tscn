@@ -40,6 +40,7 @@ collision_mask = 2
 
 [node name="RotationColliderX" type="MeshInstance3D" parent="." unique_id=1089304660 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.017573118)
+visible = false
 mesh = ExtResource("4_6igq6")
 surface_material_override/0 = ExtResource("5_ibabr")
 script = ExtResource("6_ibabr")
