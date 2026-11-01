@@ -47,7 +47,7 @@ func	_process(delta: float) -> void:
 			list_mesh[i].rotation.y = lerp_angle(list_mesh[i].rotation.y, target_rotation[i].y, delta * 0.5);
 			list_mesh[i].rotation.z = lerp_angle(list_mesh[i].rotation.z, target_rotation[i].z, delta * 0.5);
 		if list_mesh.size() > 1:
-			list_mesh[1].global_position.lerp(position_checker.global_position, delta * 0.5);
+			list_mesh[1].global_position = list_mesh[1].global_position.lerp(position_checker.global_position, delta * 0.5);
 	
-		if Time.get_ticks_msec() - solved_timestamps > 7000:
+		if Time.get_ticks_msec() - solved_timestamps > 24000:
 			set_process(false);

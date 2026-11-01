@@ -14,10 +14,10 @@ render_priority = 0
 shader = ExtResource("3_yylum")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pc304"]
-size = Vector3(0.025, 0.025, 0.025)
+size = Vector3(0.01, 0.01, 0.01)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f75v0"]
-size = Vector3(0.05, 0.05, 0.05)
+size = Vector3(0.025, 0.025, 0.025)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0mbjb"]
 size = Vector3(0.05650091, 0.05398941, 0.017066956)

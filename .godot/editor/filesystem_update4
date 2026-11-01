@@ -1,3 +1,3 @@
-res://Scenes/level_elephant_mesh.tscn
-res://Scenes/level_teapot_mesh.tscn
+res://Scenes/intro.tscn
+res://Scripts/level_logic.gd
 res://Scenes/level_planet_mesh.tscn
